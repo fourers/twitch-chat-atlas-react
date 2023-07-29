@@ -8,6 +8,8 @@ extends:
   - plugin:prettier/recommended
   - plugin:import/recommended
   - prettier
+plugins:
+  - simple-import-sort
 parserOptions:
   ecmaVersion: latest
   sourceType: module
@@ -25,3 +27,4 @@ rules:
         - _northEast
         - _southWest
   no-console: 0
+  simple-import-sort/imports: 2

@@ -30,6 +30,7 @@
         "eslint-plugin-prettier": "^5.0.0",
         "eslint-plugin-react": "^7.28.0",
         "eslint-plugin-react-hooks": "^4.3.0",
+        "eslint-plugin-simple-import-sort": "^10.0.0",
         "gh-pages": "^5.0.0",
         "html-webpack-plugin": "^5.5.3",
         "prettier": "^3.0.0",
