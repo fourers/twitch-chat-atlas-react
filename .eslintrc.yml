@@ -9,6 +9,7 @@ extends:
   - plugin:import/recommended
   - prettier
 plugins:
+  - prettier
   - simple-import-sort
 parserOptions:
   ecmaVersion: latest

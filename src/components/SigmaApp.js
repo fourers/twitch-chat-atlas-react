@@ -1,6 +1,11 @@
 import '@react-sigma/core/lib/react-sigma.min.css';
 
-import { SigmaContainer } from '@react-sigma/core';
+import {
+    ControlsContainer,
+    FullScreenControl,
+    SearchControl,
+    SigmaContainer,
+} from '@react-sigma/core';
 import Graph from 'graphology';
 import React from 'react';
 
@@ -66,6 +71,13 @@ export default function SigmaApp() {
             style={{ height: '98vh' }}
             graph={graph}
             settings={{ labelRenderedSizeThreshold: 1 }}
-        />
+        >
+            <ControlsContainer position="bottom-right">
+                <FullScreenControl />
+            </ControlsContainer>
+            <ControlsContainer position="top-right">
+                <SearchControl style={{ width: '200px' }} />
+            </ControlsContainer>
+        </SigmaContainer>
     );
 }
