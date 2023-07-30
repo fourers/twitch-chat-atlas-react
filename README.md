@@ -1,3 +1,3 @@
-# Connor Iceberg React
+# Twitch Chat Atlas React
 
 dude
