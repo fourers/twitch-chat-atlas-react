@@ -4,43 +4,68 @@ import { SigmaContainer } from '@react-sigma/core';
 import Graph from 'graphology';
 import React from 'react';
 
-import graphData from '../lesmis.json';
+import graphData from '../data.json';
 
-const getHexCode = (rgbStr) => {
-    const hex = rgbStr
-        .replace('rgb(', '')
-        .replace(')', '')
-        .split(',')
-        .map(Number)
-        .map((x) => {
-            const code = x.toString(16);
-            return code.length === 1 ? `0${code}` : code;
-        })
-        .join('');
-    return `#${hex}`;
+const shadeColour = (hexCode, magnitude) => {
+    const hexColour = hexCode.replace(`#`, ``);
+    const decimalColor = parseInt(hexColour, 16);
+    let r = (decimalColor >> 16) + magnitude;
+    r > 255 && (r = 255);
+    r < 0 && (r = 0);
+    let g = (decimalColor & 0x0000ff) + magnitude;
+    g > 255 && (g = 255);
+    g < 0 && (g = 0);
+    let b = ((decimalColor >> 8) & 0x00ff) + magnitude;
+    b > 255 && (b = 255);
+    b < 0 && (b = 0);
+    return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
+};
+
+const blendColors = (colorA, colorB, amount = 0.5) => {
+    const [rA, gA, bA] = colorA.match(/\w\w/g).map((c) => parseInt(c, 16));
+    const [rB, gB, bB] = colorB.match(/\w\w/g).map((c) => parseInt(c, 16));
+    const r = Math.round(rA + (rB - rA) * amount)
+        .toString(16)
+        .padStart(2, '0');
+    const g = Math.round(gA + (gB - gA) * amount)
+        .toString(16)
+        .padStart(2, '0');
+    const b = Math.round(bA + (bB - bA) * amount)
+        .toString(16)
+        .padStart(2, '0');
+    return `#${r}${g}${b}`;
 };
 
 const generateGraph = (data) => {
     const graph = new Graph();
-    data.nodes.forEach((node) => {
-        graph.addNode(node.id, {
-            x: node.x,
-            y: node.y,
-            label: node.label,
-            size: node.size,
-            color: getHexCode(node.color),
-        });
-    });
-    data.edges.forEach((edge) => {
-        graph.addEdge(edge.source, edge.target, {
-            color: getHexCode(edge.color),
-            weight: edge.size,
-        });
-    });
+    graph.import(data);
+    graph.forEachEdge(
+        (
+            edge,
+            _attributes,
+            _source,
+            _target,
+            sourceAttributes,
+            targetAttributes,
+        ) => {
+            const mixedColour = blendColors(
+                sourceAttributes.color,
+                targetAttributes.color,
+            );
+            const shadedColour = shadeColour(mixedColour, 50);
+            graph.updateEdgeAttribute(edge, 'color', () => shadedColour);
+        },
+    );
     return graph;
 };
 
 export default function SigmaApp() {
     const graph = generateGraph(graphData);
-    return <SigmaContainer style={{ height: '98vh' }} graph={graph} />;
+    return (
+        <SigmaContainer
+            style={{ height: '98vh' }}
+            graph={graph}
+            settings={{ labelRenderedSizeThreshold: 1 }}
+        />
+    );
 }

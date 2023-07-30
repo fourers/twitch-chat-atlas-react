@@ -28,3 +28,5 @@ rules:
         - _southWest
   no-console: 0
   simple-import-sort/imports: 2
+  no-bitwise: 0
+  no-unused-expressions: 0
