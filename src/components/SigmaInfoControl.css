@@ -9,3 +9,11 @@
     margin: 0 10px 20px 10px;
     overflow-wrap: break-word;
 }
+
+a {
+    font-size: 13px;
+}
+
+a:visited {
+    color: LinkText;
+}

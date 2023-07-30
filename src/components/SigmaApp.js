@@ -4,6 +4,7 @@ import {
     ControlsContainer,
     FullScreenControl,
     SigmaContainer,
+    ZoomControl,
 } from '@react-sigma/core';
 import Graph from 'graphology';
 import React from 'react';
@@ -75,6 +76,7 @@ export default function SigmaApp() {
             settings={{ labelRenderedSizeThreshold: 1 }}
         >
             <ControlsContainer position="bottom-right">
+                <ZoomControl />
                 <FullScreenControl />
             </ControlsContainer>
             <SigmaSearchBox />

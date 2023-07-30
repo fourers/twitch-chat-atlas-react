@@ -19,6 +19,7 @@ export default function SigmaInfoControl({ graph }) {
             <h4>
                 Twitch Chat Atlas <br /> 22-28 July 2023
             </h4>
+            <a href="https://www.twitch.tv/connoreatspants" target="_blank" role="link">twitch.tv/connoreatspants</a>
             <p>{graph.nodes().length} total chatters</p>
         </div>
     ) : (
