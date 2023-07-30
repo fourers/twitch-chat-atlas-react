@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 const port = process.env.PORT || 3000;
 
@@ -9,6 +11,7 @@ module.exports = {
     output: {
         filename: 'bundle.[fullhash].js',
         publicPath: 'auto',
+        path: path.resolve(process.cwd(), 'dist')
     },
     devtool: 'inline-source-map',
     module: {
@@ -25,6 +28,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: 'public/index.html',
             favicon: 'public/favicon.ico',
