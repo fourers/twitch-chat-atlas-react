@@ -16,7 +16,9 @@ export default function SigmaInfoControl({ graph }) {
     }, [registerEvents]);
     return currentNode === null ? (
         <div className="info">
-            <h4>Twitch Chat Atlas <br></br> 22-28 July 2023</h4>
+            <h4>
+                Twitch Chat Atlas <br /> 22-28 July 2023
+            </h4>
             <p>{graph.nodes().length} total chatters</p>
         </div>
     ) : (

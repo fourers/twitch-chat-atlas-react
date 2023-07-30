@@ -3,7 +3,6 @@ import '@react-sigma/core/lib/react-sigma.min.css';
 import {
     ControlsContainer,
     FullScreenControl,
-    SearchControl,
     SigmaContainer,
 } from '@react-sigma/core';
 import Graph from 'graphology';
@@ -11,6 +10,7 @@ import React from 'react';
 
 import graphData from '../data.json';
 import SigmaInfoControl from './SigmaInfoControl';
+import SigmaSearchBox from './SigmaSearchBox';
 
 const shadeColour = (hexCode, magnitude) => {
     const hexColour = hexCode.replace(`#`, ``);
@@ -67,6 +67,7 @@ const generateGraph = (data) => {
 
 export default function SigmaApp() {
     const graph = generateGraph(graphData);
+
     return (
         <SigmaContainer
             style={{ height: '98vh' }}
@@ -76,9 +77,7 @@ export default function SigmaApp() {
             <ControlsContainer position="bottom-right">
                 <FullScreenControl />
             </ControlsContainer>
-            <ControlsContainer position="top-left">
-                <SearchControl style={{ width: '150px' }} />
-            </ControlsContainer>
+            <SigmaSearchBox />
             <ControlsContainer position="top-right">
                 <SigmaInfoControl graph={graph} />
             </ControlsContainer>
