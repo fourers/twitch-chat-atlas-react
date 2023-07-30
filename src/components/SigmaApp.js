@@ -10,6 +10,7 @@ import Graph from 'graphology';
 import React from 'react';
 
 import graphData from '../data.json';
+import SigmaInfoControl from './SigmaInfoControl';
 
 const shadeColour = (hexCode, magnitude) => {
     const hexColour = hexCode.replace(`#`, ``);
@@ -75,8 +76,11 @@ export default function SigmaApp() {
             <ControlsContainer position="bottom-right">
                 <FullScreenControl />
             </ControlsContainer>
+            <ControlsContainer position="top-left">
+                <SearchControl style={{ width: '150px' }} />
+            </ControlsContainer>
             <ControlsContainer position="top-right">
-                <SearchControl style={{ width: '200px' }} />
+                <SigmaInfoControl graph={graph} />
             </ControlsContainer>
         </SigmaContainer>
     );

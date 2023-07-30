@@ -1,0 +1,11 @@
+.info {
+    font:
+        14px/16px Arial,
+        Helvetica,
+        sans-serif;
+    background: white;
+    background: rgba(255, 255, 255, 0.8);
+    width: 150px;
+    margin: 0 10px 20px 10px;
+    overflow-wrap: break-word;
+}
