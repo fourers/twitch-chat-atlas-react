@@ -13,7 +13,7 @@ export default function LoadingPage() {
             minHeight="98vh"
         >
             <Stack alignItems="center">
-                <Typography variant="h1" gutterBottom>
+                <Typography variant="h3" gutterBottom>
                     Loading
                 </Typography>
                 <CircularProgress color="warning" />

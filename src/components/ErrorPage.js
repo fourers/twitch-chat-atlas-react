@@ -14,7 +14,7 @@ export default function Loading({ graphError }) {
             minHeight="98vh"
         >
             <Stack alignItems="center">
-                <Typography variant="h1" gutterBottom>
+                <Typography variant="h3" gutterBottom>
                     Loading Error :(
                 </Typography>
                 <Typography variant="body1" gutterBottom>
