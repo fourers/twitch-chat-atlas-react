@@ -7,8 +7,9 @@ import {
     ZoomControl,
 } from '@react-sigma/core';
 import Graph from 'graphology';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import Loading from './Loading';
 import SigmaInfoControl from './SigmaInfoControl';
 import SigmaSearchBox from './SigmaSearchBox';
 
@@ -65,10 +66,24 @@ const generateGraph = (data) => {
     return graph;
 };
 
-export default function SigmaApp({ graphData }) {
+export default function SigmaApp({ graphPath }) {
+    const [graphData, setGraphData] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(graphPath)
+            .then((response) => response.json())
+            .then((response) => {
+                setGraphData(response);
+                setIsLoading(false);
+            });
+    }, [graphPath]);
+
     const graph = generateGraph(graphData);
 
-    return (
+    return isLoading ? (
+        <Loading />
+    ) : (
         <SigmaContainer
             style={{ height: '98vh' }}
             graph={graph}
