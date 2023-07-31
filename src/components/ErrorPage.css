@@ -1,0 +1,15 @@
+h1 {
+    font:
+        28px/32px Arial,
+        Helvetica,
+        sans-serif;
+    overflow-wrap: break-word;
+}
+
+p {
+    font:
+        14px/16px Arial,
+        Helvetica,
+        sans-serif;
+    overflow-wrap: break-word;
+}

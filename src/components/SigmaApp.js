@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import Loading from './Loading';
+import ErrorPage from './ErrorPage';
+import LoadingPage from './LoadingPage';
 import SigmaGraph from './SigmaGraph';
 
 export default function SigmaApp({ graphPath }) {
     const [graphData, setGraphData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [graphError, setGraphError] = useState(null);
 
     useEffect(() => {
         fetch(graphPath)
@@ -13,8 +15,18 @@ export default function SigmaApp({ graphPath }) {
             .then((response) => {
                 setGraphData(response);
                 setIsLoading(false);
+            })
+            .catch((error) => {
+                console.log('Error loading graph:', error);
+                setGraphError(error);
             });
     }, [graphPath]);
 
-    return isLoading ? <Loading /> : <SigmaGraph graphData={graphData} />;
+    if (graphError !== null) {
+        return <ErrorPage graphError={graphError} />;
+    }
+    if (isLoading) {
+        return <LoadingPage />;
+    }
+    return <SigmaGraph graphData={graphData} />;
 }
