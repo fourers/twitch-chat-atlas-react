@@ -9,7 +9,6 @@ import {
 import Graph from 'graphology';
 import React from 'react';
 
-import graphData from '../data.json';
 import SigmaInfoControl from './SigmaInfoControl';
 import SigmaSearchBox from './SigmaSearchBox';
 
@@ -66,7 +65,7 @@ const generateGraph = (data) => {
     return graph;
 };
 
-export default function SigmaApp() {
+export default function SigmaApp({ graphData }) {
     const graph = generateGraph(graphData);
 
     return (
