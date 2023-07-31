@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
@@ -11,7 +12,7 @@ module.exports = {
     output: {
         filename: 'bundle.[fullhash].js',
         publicPath: 'auto',
-        path: path.resolve(process.cwd(), 'dist')
+        path: path.resolve(process.cwd(), 'dist'),
     },
     devtool: 'inline-source-map',
     module: {
@@ -32,6 +33,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'public/index.html',
             favicon: 'public/favicon.ico',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: 'public/*.json', to: '[name][ext]' }],
         }),
     ],
     devServer: {
