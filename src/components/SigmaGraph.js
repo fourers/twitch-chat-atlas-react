@@ -1,19 +1,13 @@
 import '@react-sigma/core/lib/react-sigma.min.css';
 
-import {
-    ControlsContainer,
-    FullScreenControl,
-    SigmaContainer,
-    ZoomControl,
-} from '@react-sigma/core';
+import { SigmaContainer } from '@react-sigma/core';
 import Graph from 'graphology';
 import React from 'react';
 
-import SigmaInfoControl from './SigmaInfoControl';
-import SigmaSearchBox from './SigmaSearchBox';
+import SigmaGraphControl from './SigmaGraphControl';
 
 const shadeColour = (hexCode, magnitude) => {
-    const hexColour = hexCode.replace(`#`, ``);
+    const hexColour = hexCode.replace('#', '');
     const decimalColor = parseInt(hexColour, 16);
     let r = (decimalColor >> 16) + magnitude;
     r = Math.min(Math.max(r, 0), 255);
@@ -71,14 +65,7 @@ export default function SigmaGraph({ graphData }) {
             graph={graph}
             settings={{ labelRenderedSizeThreshold: 1 }}
         >
-            <ControlsContainer position="bottom-right">
-                <ZoomControl />
-                <FullScreenControl />
-            </ControlsContainer>
-            <SigmaSearchBox />
-            <ControlsContainer position="top-right">
-                <SigmaInfoControl graph={graph} />
-            </ControlsContainer>
+            <SigmaGraphControl graph={graph} />
         </SigmaContainer>
     );
 }
