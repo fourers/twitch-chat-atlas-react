@@ -12,7 +12,7 @@ import {
     useFullScreen,
 } from '@react-sigma/core';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHref, useNavigate } from 'react-router-dom';
 
 import SigmaInfoControl from './SigmaInfoControl';
 
@@ -20,17 +20,22 @@ export default function SigmaGraphControl({ graph }) {
     const { isFullScreen, toggle } = useFullScreen();
     const { reset } = useCamera();
     const navigate = useNavigate();
+    const href = useHref();
 
     const redirectAtlas = () => {
         navigate('/');
     };
     const redirectYifan = () => {
-        navigate('/');
-        navigate('yifan');
+        if (href !== '#/yifan') {
+            window.location.hash = "";
+            navigate('yifan');
+        }
     };
     const redirectReingold = () => {
-        navigate('/');
-        navigate('reingold');
+        if (href !== '#/reingold') {
+            window.location.hash = "";
+            navigate('reingold');
+        }
     };
 
     return (
