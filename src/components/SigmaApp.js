@@ -10,6 +10,7 @@ export default function SigmaApp({ graphPath }) {
     const [graphError, setGraphError] = useState(null);
 
     useEffect(() => {
+        setIsLoading(true);
         fetch(graphPath)
             .then((response) => response.json())
             .then((response) => {
