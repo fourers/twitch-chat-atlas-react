@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -37,6 +38,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [{ from: 'public/*.json', to: '[name][ext]' }],
         }),
+        // new BundleAnalyzerPlugin(),
     ],
     devServer: {
         host: 'localhost',

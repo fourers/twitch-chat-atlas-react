@@ -37,8 +37,13 @@ export default function SigmaGraphControl({ graph }) {
 
     return (
         <>
-            <ControlsContainer position="top-left">
-                <SearchControl style={{ width: '150px' }} />
+            {isFullScreen ? null : (
+                <ControlsContainer position="top-left">
+                    <SearchControl style={{ width: '150px' }} />
+                </ControlsContainer>
+            )}
+            <ControlsContainer position="top-right">
+                <SigmaInfoControl graph={graph} />
             </ControlsContainer>
             <ControlsContainer position="bottom-right">
                 <div className="react-sigma-control">
@@ -71,14 +76,6 @@ export default function SigmaGraphControl({ graph }) {
                         )}
                     </IconButton>
                 </div>
-            </ControlsContainer>
-            {isFullScreen ? null : (
-                <ControlsContainer position="top-left">
-                    <SearchControl style={{ width: '150px' }} />
-                </ControlsContainer>
-            )}
-            <ControlsContainer position="top-right">
-                <SigmaInfoControl graph={graph} />
             </ControlsContainer>
         </>
     );
