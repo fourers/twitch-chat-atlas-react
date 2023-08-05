@@ -51,9 +51,4 @@ module.exports = {
             'obliterator/take': require.resolve('obliterator/take'),
         },
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-    },
 };
