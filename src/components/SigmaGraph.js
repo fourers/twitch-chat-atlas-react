@@ -61,7 +61,6 @@ export default function SigmaGraph({ graphData }) {
 
     return (
         <SigmaContainer
-            style={{ height: '98vh' }}
             graph={graph}
             settings={{ labelRenderedSizeThreshold: 1 }}
         >

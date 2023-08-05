@@ -11,7 +11,7 @@ export default function Loading({ graphError }) {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            minHeight="98vh"
+            height="100%"
         >
             <Stack alignItems="center">
                 <Typography variant="h3" gutterBottom>
