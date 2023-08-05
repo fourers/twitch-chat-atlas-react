@@ -23,6 +23,7 @@ export default function SigmaInfoControl({ graph }) {
                 href="https://www.twitch.tv/connoreatspants"
                 target="_blank"
                 rel="noreferrer"
+                title="W Streamer"
             >
                 twitch.tv/connoreatspants
             </a>

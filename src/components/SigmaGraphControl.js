@@ -47,28 +47,28 @@ export default function SigmaGraphControl({ graph }) {
             </ControlsContainer>
             <ControlsContainer position="bottom-right">
                 <div className="react-sigma-control">
-                    <IconButton onClick={redirectAtlas}>
+                    <IconButton onClick={redirectAtlas} title="Atlas Mode">
                         <AttractionsIcon style={{ marginTop: '2px' }} />
                     </IconButton>
                 </div>
                 <div className="react-sigma-control">
-                    <IconButton onClick={redirectYifan}>
+                    <IconButton onClick={redirectYifan} title="Flare Mode">
                         <FlareIcon style={{ marginTop: '2px' }} />
                     </IconButton>
                 </div>
                 <div className="react-sigma-control">
-                    <IconButton onClick={redirectReingold}>
+                    <IconButton onClick={redirectReingold} title="Orb Mode">
                         <CoronavirusIcon style={{ marginTop: '2px' }} />
                     </IconButton>
                 </div>
                 <div className="react-sigma-control" />
                 <div className="react-sigma-control" aria-label="reset">
-                    <IconButton onClick={reset}>
+                    <IconButton onClick={reset} title="Reset Zoom">
                         <CenterFocusStrongIcon style={{ marginTop: '2px' }} />
                     </IconButton>
                 </div>
                 <div className="react-sigma-control">
-                    <IconButton onClick={toggle} aria-label="full-screen">
+                    <IconButton onClick={toggle} aria-label="full-screen" title="Full Screen">
                         {isFullScreen ? (
                             <FullscreenExitIcon style={{ marginTop: '2px' }} />
                         ) : (
