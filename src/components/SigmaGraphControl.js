@@ -68,7 +68,11 @@ export default function SigmaGraphControl({ graph }) {
                     </IconButton>
                 </div>
                 <div className="react-sigma-control">
-                    <IconButton onClick={toggle} aria-label="full-screen" title="Full Screen">
+                    <IconButton
+                        onClick={toggle}
+                        aria-label="full-screen"
+                        title="Full Screen"
+                    >
                         {isFullScreen ? (
                             <FullscreenExitIcon style={{ marginTop: '2px' }} />
                         ) : (
